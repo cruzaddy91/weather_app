@@ -317,20 +317,3 @@ def get_digital_forecast_table_weather_gov(lat, lon):
     (Table extraction logic temporarily removed for step-by-step debugging.)
     """
     pass
-
-def save_forecast_to_csv(all_dates, all_hours, temp_values, wind_values, humidity_values, filename='weather_data.csv'):
-    # Combine the data into a DataFrame
-    data = []
-    for i in range(len(all_dates)):
-        data.append({
-            'Date': all_dates[i] if i < len(all_dates) else '',
-            'Hour': all_hours[i] if i < len(all_hours) else '',
-            'Temperature (F)': temp_values[i] if i < len(temp_values) else '',
-            'Surface Wind Speed (mph)': wind_values[i] if i < len(wind_values) else '',
-            'Relative Humidity (%)': humidity_values[i] if i < len(humidity_values) else ''
-        })
-    df = pd.DataFrame(data)
-    df.to_csv(filename, index=False)
-
-# Example usage (call this after scraping in your main app):
-# save_forecast_to_csv(all_dates, all_hours, temp_values, wind_values, humidity_values)
